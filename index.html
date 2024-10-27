@@ -11,3 +11,52 @@
     <script type="module" src="./script.js"></script>
   </body>
 </html>
+<script>
+    // Initialize the timeline with default settings
+    const timeline = gsap.timeline({
+      defaults: { duration: 1.5, ease: "power2.inOut" },
+    });
+
+    // Step 1: Background Gradient Animation
+    timeline.fromTo(
+      "#paint0_angular_29_52819",
+      { opacity: 0 },
+      { opacity: 1, duration: 2 }
+    );
+
+    // Step 2: Animate the first rectangle with background filter (moving outward to the left)
+    timeline.fromTo(
+      "[filter='url(#filter0_bd_29_52819)']",
+      { opacity: 0, x: 0 },
+      { opacity: 1, x: -300, duration: 2 },
+      "-=1.5"
+    );
+
+    // Step 3: Animate two rectangles moving away from each other
+    // Rectangle 1 (moving left)
+    timeline.fromTo(
+      "[filter='url(#filter1_d_29_52819)']",
+      { opacity: 0, x: -100 },
+      { opacity: 1, x: -500, duration: 2 },
+      "-=1.5"
+    );
+
+    // Rectangle 2 (moving right)
+    timeline.fromTo(
+      "[filter='url(#filter2_d_29_52819)']",
+      { opacity: 0, x: 100 },
+      { opacity: 1, x: 500, duration: 2 },
+      "-=2"
+    );
+
+    // Step 4: Animate the small rectangle to fade in
+    timeline.fromTo(
+      "rect[x='3273'][y='194']",
+      { opacity: 0 },
+      { opacity: 1, duration: 2 },
+      "-=1.5" // Start slightly overlapping with other animations
+    );
+
+    // Control the playback to start from the beginning
+    timeline.restart();
+  </script>
